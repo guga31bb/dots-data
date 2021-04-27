@@ -108,7 +108,7 @@ save_play <- function(row) {
 }
 
 
-weekly_tracking <- load_week(14)
+weekly_tracking <- map_df(15:16, ~{load_week(.x)})
 
 existing <- list.files("data/") %>%
   as_tibble() %>%
