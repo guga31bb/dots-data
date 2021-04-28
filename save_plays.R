@@ -14,7 +14,9 @@ info <- nflfastR::load_pbp(2018) %>%
   dplyr::mutate(game_id = as.numeric(game_id))
 
 # https://github.com/rossdrucker/sportyR
-nfl_field <- sportyR::geom_football('nfl')
+
+nfl_field <- sportyR::geom_football('nfl', grass_color = "#4dbd6b")
+nfl_field
 
 load_week <- function(week) {
   
@@ -107,8 +109,8 @@ save_play <- function(row) {
   
 }
 
-
-weekly_tracking <- map_df(15:16, ~{load_week(.x)})
+# can't do more than one week bc not enough memory
+weekly_tracking <- map_df(16, ~{load_week(.x)})
 
 existing <- list.files("data/") %>%
   as_tibble() %>%
