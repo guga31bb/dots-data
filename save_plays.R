@@ -110,7 +110,7 @@ save_play <- function(row) {
 }
 
 # can't do more than one week bc not enough memory
-weekly_tracking <- map_df(16, ~{load_week(.x)})
+weekly_tracking <- map_df(17, ~{load_week(.x)})
 
 existing <- list.files("data/") %>%
   as_tibble() %>%
